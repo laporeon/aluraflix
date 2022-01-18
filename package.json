@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/laporeon/aluraflix.git",
   "author": "Laíse Carvalho <34722707+laporeon@users.noreply.github.com>",
+  "scripts": {
+    "dev": "nodemon ./src/server.js"
+  },
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -11,6 +14,7 @@
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.13.0"
   },
   "devDependencies": {
