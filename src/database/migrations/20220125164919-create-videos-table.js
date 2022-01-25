@@ -1,23 +1,33 @@
-"use strict";
-
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("categories", {
+    await queryInterface.createTable("videos", {
       id: {
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
         type: Sequelize.UUID,
+        allowNull: false,
+        primaryKey: true,
       },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-      color: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
-        required: true,
+      },
+      url: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      category_id: {
+        type: Sequelize.UUID,
+        allowNull: true,
+        references: {
+          model: "categories",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       created_at: {
         type: Sequelize.DATE,
@@ -31,6 +41,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("categories");
+    await queryInterface.dropTable("videos");
   },
 };
