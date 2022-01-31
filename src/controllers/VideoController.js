@@ -30,7 +30,7 @@ class VideoController {
     }
   }
 
-  async getVideosFree(req, res) {
+  async list(req, res) {
     try {
       const videos = await Video.findAll({
         attributes: ["id", "title", "description", "url", "category_id"],
@@ -45,22 +45,7 @@ class VideoController {
     }
   }
 
-  async getAll(req, res) {
-    try {
-      const videos = await Video.findAll({
-        attributes: ["id", "title", "description", "url", "category_id"],
-        order: [["title", "ASC"]],
-      });
-
-      return res.status(200).json({ videos });
-    } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
-    }
-  }
-
-  async getOneById(req, res) {
+  async getById(req, res) {
     try {
       const { id } = req.params;
       const video = await Video.findByPk(id);
