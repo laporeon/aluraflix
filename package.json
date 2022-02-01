@@ -5,8 +5,8 @@
   "repository": "https://github.com/laporeon/aluraflix.git",
   "author": "",
   "scripts": {
-    "start": "NODE_ENV=production node ./src/server.js",
-    "dev": "NODE_ENV=development nodemon ./src/server.js"
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
   },
   "license": "MIT",
   "dependencies": {
