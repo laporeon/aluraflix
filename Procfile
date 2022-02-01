@@ -1,1 +1,1 @@
-web: npx sequelize db:create && db:migrate:all && npx sequelize db:seed:all
+web: npx db:migrate:all && npx sequelize db:seed:all
