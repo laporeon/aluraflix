@@ -1,8 +1,25 @@
 const { Sequelize } = require("sequelize");
+const env = process.env.NODE_ENV || "development";
 
-const databaseConfig = require("../config/database");
+console.log(env);
 
-const connection = new Sequelize(databaseConfig);
+const databaseConfig = require("../config/database")[env];
+
+let connection;
+
+if (databaseConfig.use_env_variable) {
+  connection = new Sequelize(
+    process.env[databaseConfig.use_env_variable],
+    databaseConfig
+  );
+} else {
+  connection = new Sequelize(
+    databaseConfig.database,
+    databaseConfig.username,
+    databaseConfig.password,
+    databaseConfig
+  );
+}
 
 const User = require("../models/User");
 const Category = require("../models/Category");
