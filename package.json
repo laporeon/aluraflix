@@ -5,7 +5,6 @@
   "repository": "https://github.com/laporeon/aluraflix.git",
   "author": "",
   "scripts": {
-    "start": "npx sequelize db:migrate && npx sequelize db:seed:all && node ./src/server.js",
     "dev": "nodemon ./src/server.js"
   },
   "license": "MIT",
