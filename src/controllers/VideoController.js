@@ -38,9 +38,9 @@ class VideoController {
       });
 
       return res.status(200).json({ videos });
-    } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
+    } catch (e) {
+      return res.status(404).json({
+        errors: e.errors.map((err) => err.message),
       });
     }
   }
@@ -53,9 +53,9 @@ class VideoController {
       if (!video) return res.status(404).json({ error: "Video not found." });
 
       return res.status(200).json({ video });
-    } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
+    } catch (e) {
+      return res.status(404).json({
+        errors: e.errors.map((err) => err.message),
       });
     }
   }
