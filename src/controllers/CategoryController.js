@@ -23,6 +23,10 @@ class CategoryController {
         order: [["title", "ASC"]],
       });
 
+      if (categories.length <= 0) {
+        return res.status(404).json({ error: "No categories found." });
+      }
+
       return res.status(200).json({ categories });
     } catch (error) {
       return res
