@@ -9,10 +9,10 @@ class CategoryController {
       const category = await Category.create({ title, color });
 
       return res.status(201).json({ category });
-    } catch (e) {
-      return res.status(404).json({
-        errors: e.errors.map((err) => err.message),
-      });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -25,9 +25,9 @@ class CategoryController {
 
       return res.status(200).json({ categories });
     } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -41,9 +41,9 @@ class CategoryController {
 
       return res.status(200).json({ category });
     } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -66,9 +66,9 @@ class CategoryController {
 
       return res.status(200).json({ category });
     } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -95,9 +95,9 @@ class CategoryController {
 
       return res.status(200).json(categoryUpdated);
     } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -114,9 +114,9 @@ class CategoryController {
 
       return res.status(200).send();
     } catch (error) {
-      return res.status(400).json({
-        errors: error.errors.map((err) => err.message),
-      });
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 }

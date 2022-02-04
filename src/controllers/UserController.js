@@ -8,10 +8,10 @@ class UserController {
       const user = await User.create({ username, password });
 
       return res.status(201).json({ user });
-    } catch (e) {
-      return res.status(404).json({
-        errors: e.errors.map((err) => err.message),
-      });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 
@@ -26,10 +26,10 @@ class UserController {
       await user.destroy({ where: { id } });
 
       return res.status(200).send();
-    } catch (e) {
-      return res.status(404).json({
-        errors: e.errors.map((err) => err.message),
-      });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ errors: error.errors.map((err) => err.message) });
     }
   }
 }
