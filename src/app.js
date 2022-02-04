@@ -15,6 +15,10 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json("Welcome to Aluraflix API! Read the API docs on:  ");
+});
+
 app.use("/users", userRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/auth", tokenRoutes);
