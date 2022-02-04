@@ -37,6 +37,10 @@ class VideoController {
         order: [["title", "ASC"]],
       });
 
+      if (videos.length <= 0) {
+        return res.status(404).json({ error: "No videos found." });
+      }
+
       return res.status(200).json({ videos });
     } catch (error) {
       return res
