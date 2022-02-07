@@ -42,13 +42,7 @@ class Video extends Model {
         },
         category_id: {
           type: Sequelize.UUID,
-          allowNull: false,
-          validate: {
-            notEmpty: {
-              args: true,
-              msg: "Field CATEGORY_ID is required",
-            },
-          },
+          allowNull: true,
         },
       },
       { sequelize, tableName: "videos" }
