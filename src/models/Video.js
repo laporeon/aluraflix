@@ -59,7 +59,6 @@ class Video extends Model {
 
   static associate(models) {
     this.belongsTo(models.Category, {
-      constraints: false,
       foreignKey: "category_id",
     });
   }
