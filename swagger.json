@@ -1,0 +1,446 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Aluraflix API",
+    "description": "A sample API that simulates a management system for streaming videos.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://aluraflix-challenge.herokuapp.com"
+    }
+  ],
+  "tags": [],
+  "paths": {
+    "/categories/free": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "List of available categories.",
+        "description": "Return a list of all categories. No authentication need.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No categories found"
+          }
+        }
+      }
+    },
+    "/categories/{id}/videos": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "List of category's videos.",
+        "description": "Return all videos that belongs to a specific category.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of category's videos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "videos": {
+                        "type": "array",
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "Category not found."
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "List of available categories.",
+        "description": "Return a list of all categories. Authentication is required.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "No categories found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Create a category.",
+        "description": "Create a new category providing its title and color.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "JavaScript"
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "red"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error."
+          },
+          "401": {
+            "description": "Login required."
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "patch": {
+        "tags": ["Categories"],
+        "summary": "Update category.",
+        "description": "Update the color of an existing category.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "color": "yellow"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Categories"],
+        "summary": "Delete a category.",
+        "description": "Delete a category based on its primary key.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/videos/free": {
+      "get": {
+        "tags": ["Videos"],
+        "summary": "List of available videos.",
+        "description": "Return all videos stored at database. No authentication need.",
+        "responses": {
+          "200": {
+            "description": "A list of videos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "category_id": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/videos": {
+      "get": {
+        "tags": ["Videos"],
+        "summary": "List of available videos.",
+        "description": "Return all videos stored at database. Authentication is required.",
+        "responses": {
+          "200": {
+            "description": "A list of videos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "category_id": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "No videos found."
+          }
+        }
+      },
+      "post": {
+        "tags": ["Videos"],
+        "summary": "Create a video.",
+        "description": "Create a new video.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "JavaScript Course"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Learn the basics of JavaScript in 1 hour."
+                  },
+                  "url": {
+                    "type": "string",
+                    "example": "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+                  },
+                  "category_id": {
+                    "type": "string",
+                    "example": "c4055632-a9a4-45da-8be1-11dcdec15432"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error."
+          },
+          "401": {
+            "description": "Login required."
+          }
+        }
+      }
+    },
+    "/videos/{id}": {
+      "delete": {
+        "tags": ["Videos"],
+        "summary": "Delete a video.",
+        "description": "Delete a video based on its primary key.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
+}
