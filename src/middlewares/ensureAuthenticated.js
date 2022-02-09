@@ -10,11 +10,8 @@ async function ensureAuthenticated(req, res, next) {
 
   try {
     const { id, username } = verify(token, process.env.TOKEN_SECRET);
-    console.log(id, username);
 
     const user = await User.findByPk(id);
-
-    console.log(user);
 
     if (!user)
       return res.status(404).json({ error: "User invalid or not found." });
