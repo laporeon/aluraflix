@@ -38,12 +38,12 @@ class Category extends Model {
     return this;
   }
 
-  // static associate(models) {
-  //   this.hasMany(models.Video, {
-  //     constraints: false,
-  //     foreignKey: "category_id",
-  //   });
-  // }
+  static associate(models) {
+    this.hasMany(models.Video, {
+      constraints: false,
+      foreignKey: "category_id",
+    });
+  }
 }
 
 module.exports = Category;
