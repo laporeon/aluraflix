@@ -58,7 +58,7 @@ class CategoryController {
         where: {
           id,
         },
-        attributes: ["id", "title", "color"],
+        attributes: ["title"],
         include: {
           model: Video,
           attributes: ["id", "title", "description", "url"],
