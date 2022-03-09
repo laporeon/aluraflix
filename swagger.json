@@ -400,6 +400,47 @@
       }
     },
     "/videos/{id}": {
+      "patch": {
+        "tags": ["Videos"],
+        "summary": "Update video.",
+        "description": "Update the URL of an existing video.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "url": "https://www.youtube.com/watch?v=Xj52562gda"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Login required."
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
       "delete": {
         "tags": ["Videos"],
         "summary": "Delete a video.",
@@ -438,6 +479,73 @@
           },
           "404": {
             "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create an user.",
+        "description": "Create a new user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "amazinguser"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "nicepassword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error."
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete an user.",
+        "description": "Delete an existing user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "f82bc270-7843-2b85-1900-178f766755"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "20o": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation error."
+          },
+          "404": {
+            "description": "Not found."
           }
         }
       }
