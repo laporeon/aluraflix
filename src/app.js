@@ -21,7 +21,7 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.get("/", (req, res) => {
-  res.json("Welcome to Aluraflix API! Read the API docs on:  ");
+  res.json({ msg: "Welcome to Aluraflix API!", docs: `Go to /api-docs to see full documentation.` });
 });
 
 app.use("/users", userRoutes);
