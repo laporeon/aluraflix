@@ -5,16 +5,13 @@
     "description": "A sample API that simulates a management system for streaming videos.",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://aluraflix-challenge.herokuapp.com"
-    }
-  ],
   "tags": [],
   "paths": {
     "/categories/free": {
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "List of available categories.",
         "description": "Return a list of all categories. No authentication need.",
         "responses": {
@@ -50,7 +47,9 @@
     },
     "/categories/{id}/videos": {
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "List of category's videos.",
         "description": "Return all videos that belongs to a specific category.",
         "parameters": [
@@ -116,7 +115,9 @@
     },
     "/categories": {
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "List of available categories.",
         "description": "Return a list of all categories. Authentication is required.",
         "responses": {
@@ -153,7 +154,9 @@
         }
       },
       "post": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Create a category.",
         "description": "Create a new category providing its title and color.",
         "requestBody": {
@@ -190,7 +193,9 @@
     },
     "/categories/{id}": {
       "patch": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Update category.",
         "description": "Update the color of an existing category.",
         "parameters": [
@@ -231,7 +236,9 @@
         }
       },
       "delete": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Delete a category.",
         "description": "Delete a category based on its primary key.",
         "parameters": [
@@ -274,7 +281,9 @@
     },
     "/videos/free": {
       "get": {
-        "tags": ["Videos"],
+        "tags": [
+          "Videos"
+        ],
         "summary": "List of available videos.",
         "description": "Return all videos stored at database. No authentication need.",
         "responses": {
@@ -313,7 +322,9 @@
     },
     "/videos": {
       "get": {
-        "tags": ["Videos"],
+        "tags": [
+          "Videos"
+        ],
         "summary": "List of available videos.",
         "description": "Return all videos stored at database. Authentication is required.",
         "responses": {
@@ -356,7 +367,9 @@
         }
       },
       "post": {
-        "tags": ["Videos"],
+        "tags": [
+          "Videos"
+        ],
         "summary": "Create a video.",
         "description": "Create a new video.",
         "requestBody": {
@@ -401,7 +414,9 @@
     },
     "/videos/{id}": {
       "patch": {
-        "tags": ["Videos"],
+        "tags": [
+          "Videos"
+        ],
         "summary": "Update video.",
         "description": "Update the URL of an existing video.",
         "parameters": [
@@ -442,7 +457,9 @@
         }
       },
       "delete": {
-        "tags": ["Videos"],
+        "tags": [
+          "Videos"
+        ],
         "summary": "Delete a video.",
         "description": "Delete a video based on its primary key.",
         "parameters": [
@@ -485,7 +502,9 @@
     },
     "/users": {
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Create an user.",
         "description": "Create a new user.",
         "requestBody": {
@@ -519,7 +538,9 @@
     },
     "/users/{id}": {
       "delete": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Delete an user.",
         "description": "Delete an existing user.",
         "requestBody": {
